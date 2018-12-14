@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29b2e96254710044906ab7a3551996b, type: 3}
+  m_Name: 2x4.0
+  m_EditorClassIdentifier: 
+  CrossSectionalArea: 4
+  ElectricalResistivity: 0.0000000168
+  NumberOfLines: 2
+  ResistancePerMeter: 0.00084
+  PricePerMeter: 0.8
