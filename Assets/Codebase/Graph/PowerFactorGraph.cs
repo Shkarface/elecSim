@@ -30,12 +30,12 @@ public class PowerFactorGraph : BaseGraph
             StateText.text = string.Empty;
         else if (_PowerFactorValues[0] > GoodThreshold.Threshold)
         {
-            StateText.text = $"Good - {(int)(_PowerFactorValues[0] * 100)}%";
+            StateText.text = $"Good - {_PowerFactorValues[0].ToString("p0")}";
             StateText.color = GoodThreshold.Color;
         }
         else if (_PowerFactorValues[0] > NormalThreshold.Threshold)
         {
-            StateText.text = $"Normal - {(int)(_PowerFactorValues[0] * 100)}%";
+            StateText.text = $"Normal - {_PowerFactorValues[0].ToString("p0")}";
             StateText.color = NormalThreshold.Color;
         }
         else

@@ -10,6 +10,7 @@ public class BaseGraph : MonoBehaviour
     [SerializeField] float UpperLimit = 10;
     [SerializeField] float LowerLimit = 5;
     [SerializeField] string Unit;
+    [SerializeField] string AxisFormat = "n0";
     [Range(1, 2000)]
     [SerializeField] protected int UpdateDelay = 100;
     [SerializeField] bool UpdateLimits = true;
@@ -123,14 +124,23 @@ public class BaseGraph : MonoBehaviour
     protected virtual void UpdateGraphProperties()
     {
         if (UpperMaxText != null)
-            UpperMaxText.text = $"{UpperLimit.ToString("f2")} {Unit}";
+            UpperMaxText.text = $"{UpperLimit.ToString(AxisFormat)} {Unit}";
         if (UpperHalfText != null)
-            UpperHalfText.text = $"{(UpperLimit / 2f).ToString("f2")} {Unit}";
+            UpperHalfText.text = $"{(UpperLimit / 2f).ToString(AxisFormat)} {Unit}";
+
+        string lowerMax = string.Empty;
+        string lowerHalf = string.Empty;
+
+        if (LowerLimit != 0)
+        {
+            lowerMax = $"-{LowerLimit.ToString(AxisFormat)} {Unit}";
+            lowerHalf = $"-{(LowerLimit / 2f).ToString(AxisFormat)} {Unit}";
+        }
 
         if (LowerMaxText != null)
-            LowerMaxText.text = $"-{LowerLimit.ToString("f2")} {Unit}";
+            LowerMaxText.text = lowerMax;
         if (LowerHalfText != null)
-            LowerHalfText.text = $"{(LowerLimit / 2f).ToString("f2")} {Unit}";
+            LowerHalfText.text = lowerHalf;
     }
 
     protected float NormalizeValue(float value)
