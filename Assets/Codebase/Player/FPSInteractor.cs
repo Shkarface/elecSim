@@ -6,6 +6,7 @@ public class FPSInteractor : MonoBehaviour
 {
     public Image Indicator;
     public TextMeshProUGUI HelpText;
+    public Image HelpTextBackground;
     public AudioClip InteractionSound;
     public float SphereCastRadius = 0.54f;
     public LayerMask InteractionLayer;
@@ -28,8 +29,15 @@ public class FPSInteractor : MonoBehaviour
                 if (_HelpText == null || _LastInteractable != interactable || true)
                     _HelpText = interactable.GetHelpText();
                 _LastInteractable = interactable;
-                HelpText.CrossFadeAlpha(1f, 0.3f, true);
-                HelpText.SetText(_HelpText);
+
+                if (!string.IsNullOrEmpty(_HelpText))
+                {
+                    HelpText.CrossFadeAlpha(1f, 0.3f, true);
+                    HelpTextBackground.CrossFadeAlpha(.9f, 0.2f, true);
+                    HelpText.SetText(_HelpText);
+                }
+                else
+                    HideHelpText();
                 if (Input.GetMouseButtonDown(0))
                 {
                     if (interactable.Interact())
@@ -52,5 +60,6 @@ public class FPSInteractor : MonoBehaviour
     {
         _HelpText = null;
         HelpText.CrossFadeAlpha(0.001f, 0.1f, true);
+        HelpTextBackground.CrossFadeAlpha(0.001f, 0.1f, true);
     }
 }
